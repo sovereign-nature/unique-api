@@ -6,7 +6,7 @@ dotenv.config();
 
 // man picture (medium size png)
 const IMAGE_URL =
-  "https://real.myfilebase.com/ipfs/QmXzECuBhrG2xy6ewRJCivZFiTYeuvoAosTjRADhuHaoUA";
+  "https://real.myfilebase.com/ipfs/QmVQgYDk7655Tu2nKtbky4pcJV34Kg4NDrVW48jYJZTasC";
 
 const getLinkToCollection = (sdk: Sdk, collectionId: number) => {
   return `${sdk.options.baseUrl}/collections/v2?collectionId=${collectionId}`;
@@ -24,12 +24,21 @@ const PERMISSION_COLLECTION_ADMIN = {
 
 const createCollection = async (sdk: Sdk): Promise<number> => {
   const collectionCreationResult = await sdk.collection.createV2({
-    name: "Demo Collection",
-    description: "Demo Collection Description",
-    symbol: "DEMO",
+    name: "DOTphin Proofs",
+    description:
+      "Embark on a trailblazing journey with the DOTphin Proofs collection – your gateway to evolving your DOTphin NFT.",
+    symbol: "DOTPP",
     cover_image: { url: IMAGE_URL },
     potential_attributes: [
-      { trait_type: "color", values: ["RED", "Light green", "navy blue"] },
+      { trait_type: "element", values: ["air", "earth", "water"] },
+      { trait_type: "eventId" },
+      { trait_type: "eventURL" },
+      { trait_type: "country" },
+      { trait_type: "city" },
+      { trait_type: "virtualEvent" },
+      { trait_type: "startDate" },
+      { trait_type: "endDate" },
+      { trait_type: "proofOf" },
     ],
   });
 
@@ -96,12 +105,12 @@ const main = async () => {
     waitBetweenStatusRequestsInMs: 5000,
   });
 
-  // const collectionId = await createCollection(sdk);
-  // console.log("Collection created:", collectionId);
+  const collectionId = await createCollection(sdk);
+  console.log("Collection created:", collectionId);
 
   // const tokenIds = await mintTokens(sdk, 3019);
 
-  console.log(await sdk.common.getNonce({ address: account.address }));
+  // console.log(await sdk.common.getNonce({ address: account.address }));
 
   // console.log("Tokens minted:", tokenIds);
 };
