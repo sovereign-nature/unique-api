@@ -100,7 +100,7 @@ const main = async () => {
   console.log("Account address:", account.address);
 
   const sdk = new Sdk({
-    baseUrl: "https://rest.unique.network/opal/v1",
+    baseUrl: "https://rest.unique.network/unique/v1",
     account,
     waitBetweenStatusRequestsInMs: 5000,
   });
