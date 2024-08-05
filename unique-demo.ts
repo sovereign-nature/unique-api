@@ -4,6 +4,8 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 
+const NETWORK: "opal" | "unique" = "opal";
+
 // man picture (medium size png)
 const IMAGE_URL =
   "https://real.myfilebase.com/ipfs/QmVQgYDk7655Tu2nKtbky4pcJV34Kg4NDrVW48jYJZTasC";
@@ -100,7 +102,7 @@ const main = async () => {
   console.log("Account address:", account.address);
 
   const sdk = new Sdk({
-    baseUrl: "https://rest.unique.network/unique/v1",
+    baseUrl: `https://rest.unique.network/${NETWORK}/v1`,
     account,
     waitBetweenStatusRequestsInMs: 5000,
   });
